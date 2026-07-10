@@ -1,0 +1,25 @@
+'EOF'
+# Résultats
+results/
+
+# Données de séquençage
+data/raw/*.fastq
+data/raw/*.fastq.gz
+data/raw/*.fq
+data/raw/*.fq.gz
+
+# Fichiers temporaires
+work/
+.nextflow*
+.nextflow/
+.cache/
+
+# Logs
+*.log
+
+# Fichiers macOS
+.DS_Store
+
+# Environnements locaux
+.conda/
+EOF
