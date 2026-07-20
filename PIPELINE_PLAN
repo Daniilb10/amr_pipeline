@@ -16,4 +16,8 @@ DORADO(conditionnel) -FASTQ
                       |
                   Rapport Finaux (MULTIQC) et tableau recapitulatif
 
+Entrée du pipeline:
+Fichiers FASTQ, POD5, plusieurs isolat dans un fichier Samplesheet CSV
+
+
 
