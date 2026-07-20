@@ -19,5 +19,15 @@ DORADO(conditionnel) -FASTQ
 Entrée du pipeline:
 Fichiers FASTQ, POD5, plusieurs isolat dans un fichier Samplesheet CSV
 
+Sorties du pipeline:
+- FASTQ produit par Dorado 
+- rapports NanoPlot
+- lectures filtrées 
+- assemblage FASTA 
+- résultats QUAST 
+- annotation Bakta 
+- résultats AMRFinderPlus 
+- rapport MultiQC
+
 
 
