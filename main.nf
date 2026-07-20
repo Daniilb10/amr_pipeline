@@ -1,4 +1,4 @@
-cat > main.nf <<'EOF'
+
 #!/usr/bin/env nextflow
 
 nextflow.enable.dsl = 2
@@ -17,4 +17,3 @@ workflow {
         .of('Pipeline initialization successful')
         .view()
 }
-EOF
