@@ -9,9 +9,30 @@ work/
 
 # Results
 results/
+output/
+reports/
+
+#Donnees de sequencage 
+*.pod5
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.sam
+*.cram
+
+#Bases de donnees
+databasses/
+db/
+bakta_db/
+amrfinder_db/
+
 
 # Conda
 .conda/
+env/
+venv/
 
 # macOS
 .DS_Store
@@ -21,3 +42,5 @@ results/
 
 # Temporary files
 *.tmp
+*.Temp
+*.log
