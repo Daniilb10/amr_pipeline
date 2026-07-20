@@ -1,0 +1,19 @@
+DORADO(conditionnel) -FASTQ
+                      |
+                  NANOPLOT
+                      |
+                  FILTLONG
+                      |
+                  NANOPLOT (APRÈS-FILTRAGE)
+                      |
+                  ASSEMBLAGE (FLYE)
+                      |
+                 QUALITÉ DE L'ASSEMBLAGE (QUAST)      
+                      |
+                  ANNOTATION (BAKTA)
+                      |
+                  AMR GÈNES (AMRFINDERPLUS)
+                      |
+                  Rapport Finaux (MULTIQC) et tableau recapitulatif
+
+
