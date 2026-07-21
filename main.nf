@@ -1,19 +1,38 @@
-
 #!/usr/bin/env nextflow
 
 nextflow.enable.dsl = 2
 
 workflow {
-    log.info """
-    ==========================================
-    AMR Oxford Nanopore Pipeline
-    ==========================================
-    Input  : ${params.input}
-    Output : ${params.outdir}
-    ==========================================
-    """
 
-    Channel
-        .of('Pipeline initialization successful')
-        .view()
+    /*
+     * Vérification du paramètre --input
+     */
+    if (!params.input) {
+        error """
+        Aucun samplesheet n'a été fourni.
+
+        Utilisation :
+        nextflow run main.nf \
+            --input assets/samplesheet.example.csv
+        """
+    }
+
+    /*
+     * Création d'un canal contenant le fichier CSV
+     */
+    samplesheet_ch = Channel
+        .fromPath(params.input, checkIfExists: true)
+
+    /*
+     * Lecture du fichier CSV
+     */
+    samples_ch = samplesheet_ch
+        .splitCsv(header: true)
+
+    /*
+     * Affichage de chaque ligne
+     */
+    samples_ch.view { row ->
+        "Échantillon lu : ${row}"
+    }
 }
