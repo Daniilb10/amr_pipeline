@@ -132,7 +132,9 @@ return tuple(meta, inputPath)
         ${params.input}
         """ 
     } 
-        
+        /*
+         * Lecture du samplesheet et validation des entrées
+         */
     samples_ch = channel
         .fromPath(params.input, checkIfExists: true) 
         .splitCsv(header: true) 
