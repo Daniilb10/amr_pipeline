@@ -6,4 +6,8 @@
 
 ## Étapes prévues 1. Basecalling conditionnel avec Dorado 2. Contrôle qualité avec NanoPlot 3. Filtrage avec Filtlong 4. Assemblage avec Flye 5. Évaluation avec QUAST 6. Annotation avec Bakta 7. Détection AMR avec AMRFinderPlus 8. Rapport final avec MultiQC 
 
+## Role du samplesheet.csv permettre aux utilisateurs d'entrer leurs propres fichiers csv. la colonne sample (identifiant unique de l'échantillon), la colonne input_type (fastq ou pod5), la colonne input (chemin du fichier ou dossier)
+
+
 ## Lancement actuel ```bash nextflow run main.nf
+
