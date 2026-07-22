@@ -1,14 +1,12 @@
 process DORADO_BASECALL {
-    
-    tag "${sample_id}"
 
-    publishDir "${params.outdir}/basecall", mode: 'copy', overwrite: true
+    tag "${meta.id}"
 
     input:
-    tuple val(sample_id), path(pod5_file)
+    tuple val(meta), path(pod5_input)
 
     output:
-    tuple val(sample_id), path("${sample_id}.fastq.gz"),emit: reads
+    tuple val(meta), path("${meta.id}.fastq.gz"), emit: fastq
 
     script:
     """
@@ -16,9 +14,8 @@ process DORADO_BASECALL {
 
     dorado basecaller \
         ${params.dorado_model} \
-        ${pod5_file} \
-        --threads ${task.cpus} \
+        ${pod5_input} \
         --emit-fastq \
-        gzip -c > ${sample_id}.fastq.gz
+    | gzip -c > ${meta.id}.fastq.gz
     """
 }
