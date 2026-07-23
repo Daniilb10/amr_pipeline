@@ -64,6 +64,7 @@ nextflow.enable.dsl = 2
     if (!(filename.endsWith('.fastq') || 
           filename.endsWith('.fastq.gz') || 
           filename.endsWith('.fq') || 
+          filename.endsWith('xz')  || 
           filename.endsWith('.fq.gz'))) { 
                         
                         
