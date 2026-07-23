@@ -1,6 +1,8 @@
 #!/usr/bin/env nextflow
  
 nextflow.enable.dsl = 2 
+
+include { DORADO_BASECALL } from './modules/dorado_basecall'
  
  def validateSample(row) { 
 
@@ -149,6 +151,12 @@ return tuple(meta, inputPath)
         fastq: meta.input_type == 'fastq'
         pod5: meta.input_type == 'pod5'
     }
+
+   /*
+    * Basecalling seulement pour les fichiers pod5
+    */
+   DORADO_BASECALL(input_channel.pod5)
+
     
     /*
      * Affichage temporaire des FASTQ
