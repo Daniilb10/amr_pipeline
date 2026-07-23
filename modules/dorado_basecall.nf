@@ -1,6 +1,10 @@
 process DORADO_BASECALL {
 
-    tag "${meta.id}"
+    tag "${meta.id}" 
+
+    publishDir "${param.outdir}/basecalling",
+        mode: 'copy'
+        overwrite: true
 
     input:
     tuple val(meta), path(pod5_input)
@@ -13,9 +17,12 @@ process DORADO_BASECALL {
     set -euo pipefail
 
     dorado basecaller \
-        ${params.dorado_model} \
-        ${pod5_input} \
+        "${params.dorado_model}" \
+        "${pod5_input}" \
+        --recursive  \
         --emit-fastq \
-    | gzip -c > ${meta.id}.fastq.gz
+    | gzip -c > "${meta.id}.fastq.gz"
+
+    test -s "${meta_id}.fastq.gz"
     """
 }
