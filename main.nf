@@ -3,6 +3,7 @@
 nextflow.enable.dsl = 2 
 
 include { DORADO_BASECALL } from './modules/dorado_basecall'
+include { NANOPLOT_RAW } from './modules/nanoplot'
  
  def validateSample(row) { 
 
@@ -157,6 +158,40 @@ return tuple(meta, inputPath)
     */
    DORADO_BASECALL(input_channel.pod5)
 
+    /*
+     * FASTQ déjà basecallés
+     */
+    direct_fastq_ch = input_channels.fastq.map { meta, fastq ->
+
+        def updated_meta = meta + [
+            source: 'samplesheet'
+        ]
+
+        tuple(updated_meta, fastq)
+    }
+    
+    /*
+     * FASTQ produits par Dorado
+     */
+    dorado_fastq_ch = DORADO_BASECALL.out.fastq.map { meta, fastq ->
+
+        def updated_meta = meta + [
+            source: 'dorado'
+        ]
+
+        tuple(updated_meta, fastq)
+    }
+
+    /*
+     * Réunion de tous les FASTQ dans un seul canal
+     */
+    reads_ch = direct_fastq_ch.mix(dorado_fastq_ch)
+
+    /*
+     * Contrôle qualité NanoPlot
+     */
+    NANOPLOT_RAW(reads_ch)
+
     
     /*
      * Affichage temporaire des FASTQ
@@ -185,6 +220,21 @@ return tuple(meta, inputPath)
             Fichier  : ${pod5}
             ------------------------------
             """.stripIndent()
+    }
+
+    /*
+     * Affichage temporaire des résultats
+     */
+    NANOPLOT_RAW.out.report.view { meta, report_dir ->
+        """
+        =====================================
+        NANOPLOT TERMINÉ
+        =====================================
+        Échantillon : ${meta.id}
+        Origine     : ${meta.source}
+        Rapport     : ${report_dir}
+        =====================================
+        """.stripIndent()
     }
 
 
