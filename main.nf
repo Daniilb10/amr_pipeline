@@ -192,6 +192,20 @@ return tuple(meta, inputPath)
      */
     NANOPLOT_RAW(reads_ch)
 
+    /*
+     * Filtration
+     */
+    FILTLONG(reads_ch)
+
+    /*
+     * FILTLONG.out.reads doit produire :
+     * tuple(meta, filtered_fastq)
+     */
+    filtered_qc_ch = FILTLONG.out.reads.map { meta, reads ->
+        tuple(meta, reads, 'filtered')
+    }
+
+
     
     /*
      * Affichage temporaire des FASTQ
