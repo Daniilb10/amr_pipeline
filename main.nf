@@ -4,6 +4,7 @@ nextflow.enable.dsl = 2
 
 include { DORADO_BASECALL } from './modules/dorado_basecall'
 include { NANOPLOT_RAW } from './modules/nanoplot'
+include { FILTLONG } from './modules/filtlong'
  
  def validateSample(row) { 
 
