@@ -242,6 +242,11 @@ return tuple(meta, inputPath)
      */
     MEDAKA(medaka_input_ch)
 
+   /*
+    * Annotation des assemblages polis
+    */
+    PROKKA(MEDAKA.out.consensus)
+
 
     /*
      * Affichage temporaire 
