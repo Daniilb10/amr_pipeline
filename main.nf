@@ -6,6 +6,7 @@ include { DORADO_BASECALL } from './modules/dorado_basecall'
 include { NANOPLOT_RAW } from './modules/nanoplot'
 include { FILTLONG } from './modules/filtlong'
 include { FLYE }  from './modules/flye'
+include { MEDAKA } from './modules/medaka'
  
  def validateSample(row) { 
 
@@ -212,6 +213,33 @@ return tuple(meta, inputPath)
      */
     FLYE(FILTLONG.out.reads)
 
+   /*
+    * Préparation des lectures filtrées pour la jointure
+    */
+   filtered_for_medaka_ch = FILTLONG.out.reads.map { meta, reads ->
+       tuple(meta.id, meta, reads)
+    }
+
+    /*
+     * Préparation des assemblages Flye pour la jointure
+     */
+      assembly_for_medaka_ch = FLYE.out.assembly.map { meta, assembly ->
+        tuple(meta.id, assembly)
+      }
+
+     /*
+      * Association par sample ID
+      */
+      medaka_input_ch = filtered_for_medaka_ch
+         .join(assembly_for_medaka_ch)
+         .map { sample_id, meta, reads, assembly ->
+                tuple(meta, reads, assembly)
+    }
+
+    /*
+     * Polissage Medaka
+     */
+    MEDAKA(medaka_input_ch)
 
 
     /*
