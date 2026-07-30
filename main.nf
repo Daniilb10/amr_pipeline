@@ -5,6 +5,7 @@ nextflow.enable.dsl = 2
 include { DORADO_BASECALL } from './modules/dorado_basecall'
 include { NANOPLOT_RAW } from './modules/nanoplot'
 include { FILTLONG } from './modules/filtlong'
+include { FLYE }  from './modules/flye'
  
  def validateSample(row) { 
 
@@ -206,51 +207,28 @@ return tuple(meta, inputPath)
         tuple(meta, reads, 'filtered')
     }
 
+    /*
+     * Assemblage de novo
+     */
+    FLYE(FILTLONG.out.reads)
 
+
+
+    /*
+     * Affichage temporaire 
+     */
+    FLYE.out.assembly.view { meta, assembly ->
+        """
+        ------------------------------
+            ASSENBLAGE FLYE TERMINE
+            ------------------------------
+            Echantillon    : ${meta.id}
+            Assemblage   : ${assembly}
+            ------------------------------
+            """.stripIndent()
+    }
     
-    /*
-     * Affichage temporaire des FASTQ
-     */
-    input_channels.fastq.view { meta, fastq ->
-        """
-        ------------------------------
-            CANAL FASTQ
-            ------------------------------
-            ID       : ${meta.id}
-            Type     : ${meta.input_type}
-            Fichier  : ${fastq}
-            ------------------------------
-            """.stripIndent()
-    }
-    /*
-     * Affichage temporaire des POD5
-     */
-    input_channels.pod5.view { meta, pod5 ->
-        """
-        ------------------------------
-            CANAL POD5
-            ------------------------------
-            ID       : ${meta.id}
-            Type     : ${meta.input_type}
-            Fichier  : ${pod5}
-            ------------------------------
-            """.stripIndent()
-    }
 
-    /*
-     * Affichage temporaire des résultats
-     */
-    NANOPLOT_RAW.out.report.view { meta, report_dir ->
-        """
-        =====================================
-        NANOPLOT TERMINÉ
-        =====================================
-        Échantillon : ${meta.id}
-        Origine     : ${meta.source}
-        Rapport     : ${report_dir}
-        =====================================
-        """.stripIndent()
-    }
 
 
 }
