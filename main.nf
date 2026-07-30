@@ -8,7 +8,7 @@ include { FILTLONG } from './modules/filtlong'
 include { FLYE }  from './modules/flye'
 include { MEDAKA } from './modules/medaka'
 include { PROKKA } from './modules/prokka'
-include { AMRFINDER } from './modules/amrfinder'
+include { ABRICATE } from './modules/abricate'
  
  def validateSample(row) { 
 
@@ -252,6 +252,8 @@ return tuple(meta, inputPath)
     * 
     */
     AMRFINDER(MEDAKA.out.consensus)
+
+    ABRICATE(MEDAKA.out.consensus)
 
 
     /*
