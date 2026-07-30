@@ -8,6 +8,7 @@ include { FILTLONG } from './modules/filtlong'
 include { FLYE }  from './modules/flye'
 include { MEDAKA } from './modules/medaka'
 include { PROKKA } from './modules/prokka'
+include { AMRFINDER } from './modules/amrfinder'
  
  def validateSample(row) { 
 
@@ -246,6 +247,11 @@ return tuple(meta, inputPath)
     * Annotation des assemblages polis
     */
     PROKKA(MEDAKA.out.consensus)
+
+   /*
+    * 
+    */
+    AMRFINDER(MEDAKA.out.consensus)
 
 
     /*
