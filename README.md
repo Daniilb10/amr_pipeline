@@ -11,3 +11,7 @@
 
 ## Lancement actuel ```bash nextflow run main.nf --input (chemin vers le samplesheet contenant le chemin d'accès aux données)
 
+
+##installation: Nextflow >= 23.04; Conda ou Mamba; Java + 17(java -version)
+
+
