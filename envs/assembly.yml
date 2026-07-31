@@ -1,0 +1,6 @@
+name: assembly
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+   -flye
