@@ -5,3 +5,4 @@ channels:
 dependencies:
   -nanoplot
   -filtlong
+  -QUAST
