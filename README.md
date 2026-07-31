@@ -34,4 +34,25 @@ Java + 17(java -version)
 ## Clone:
 ```bash git clone https://github.com/Daniilb10/amr_pipeline cd amr_pipeline ```
 
+## Outputs:
+1.Fichiers produit par le basecalling avec les données en (format: fastq.gz)
+
+2.Fichiers QC avec les données nanoplot pour chaque échantillons (formats: html, png, txt, log)
+
+3.Fichiers filtered avec les données filtrés par filtlong pour chaque échantillons (format: fastq.gz)
+
+4.Dossier Flye avec fichiers pour chaque échantillons contenant l'assemblage (formats: fasta,txt,log)
+
+5.Dossier Medaka avec fichiers pour chaque échantillons contenant l'assemblage poli (formats: bam,bai,log,hdf,fasta)
+
+6.Dossier assembly_qc avec fichiers pour chaque échantillons contenant une évaluation de la qualité de l'assemblage (formats: pdf, html, tsv, txt)
+
+7.Dossier Prokka avec les fichiers contenant l'annotation fonctionnelle pour chaque échantillons (formats: faa,fna,fsa,gbk,gfk,log,sqn,tbl,tsv,txt)
+
+8.Dossier abricate avec les fichiers contenant les informations de 3 bases de données plasmidfinder,vfdb,resfinder (formats:tsv,log)
+
+
+
+
+
 
