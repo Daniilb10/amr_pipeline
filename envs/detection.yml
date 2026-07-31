@@ -1,0 +1,6 @@
+name: detection
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  -abricate
