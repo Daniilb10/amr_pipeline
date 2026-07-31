@@ -32,6 +32,6 @@ Conda ou Mamba
 Java + 17(java -version)
 
 ## Clone:
-```bash git clone 
+```bash git clone https://github.com/Daniilb10/amr_pipeline cd amr_pipeline ```
 
 
