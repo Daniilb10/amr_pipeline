@@ -26,7 +26,7 @@ echo "Pré-requis vérifiés."
 echo ""
 echo "Création des environnements Conda..."
 
-for envfile in env/*.yml
+for envfile in envs/*.yml
 do
     echo "Installation de $envfile"
     conda env create -f "$envfile" || true
