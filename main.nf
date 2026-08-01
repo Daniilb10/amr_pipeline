@@ -161,7 +161,7 @@ return tuple(meta, inputPath)
    /*
     * Basecalling seulement pour les fichiers pod5
     */
-   DORADO_BASECALL(input_channel.pod5)
+   DORADO_BASECALL(input_channels.pod5)
 
     /*
      * FASTQ déjà basecallés
