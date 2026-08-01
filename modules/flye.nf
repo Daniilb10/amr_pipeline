@@ -1,5 +1,7 @@
 process FLYE {
 
+    conda "${projectDir}/envs/assembly.yml"
+
     tag "${meta.id}"
 
     cpus 4
