@@ -1,5 +1,7 @@
 process PROKKA {
 
+    conda "${projectDir}/env/annotation.yml"
+
     tag "${meta.id}"
 
     publishDir "${params.outdir}/annotation/prokka/${meta.id}",
