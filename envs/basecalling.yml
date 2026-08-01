@@ -1,8 +1,8 @@
 name: basecalling
 
 channels:
-  -bioconda
-  -conda-forge
+  - bioconda
+  - conda-forge
 
 dependencies:
-  -python=3.11
+  - python=3.11
