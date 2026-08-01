@@ -3,6 +3,6 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  -nanoplot
-  -filtlong
-  -QUAST
+  - nanoplot
+  - filtlong
+  - QUAST
