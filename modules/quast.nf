@@ -1,5 +1,7 @@
 process QUAST {
 
+    conda "${projectDir}/envs/qc.yml"
+
     tag "${meta.id}"
 
     cpus 4
