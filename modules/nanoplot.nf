@@ -1,5 +1,7 @@
 process NANOPLOT_RAW {
 
+    conda "${projectDir}/envs/qc.yml"
+
     tag "${meta.id}"
 
     cpus 4
