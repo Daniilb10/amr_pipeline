@@ -2,7 +2,7 @@ process DORADO_BASECALL {
 
     tag "${meta.id}" 
 
-    publishDir "${param.outdir}/basecalling",
+    publishDir "${params.outdir}/basecalling",
         mode: 'copy'
         overwrite: true
 
@@ -23,6 +23,6 @@ process DORADO_BASECALL {
         --emit-fastq \
     | gzip -c > "${meta.id}.fastq.gz"
 
-    test -s "${meta_id}.fastq.gz"
+    test -s "${meta.id}.fastq.gz"
     """
 }
