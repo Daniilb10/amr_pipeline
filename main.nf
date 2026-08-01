@@ -251,8 +251,6 @@ return tuple(meta, inputPath)
    /*
     * 
     */
-    AMRFINDER(MEDAKA.out.consensus)
-
     ABRICATE(MEDAKA.out.consensus)
 
 
