@@ -21,6 +21,18 @@ Ce projet développe un pipeline Nextflow pour l’analyse de génomes bactérie
 ## Role du samplesheet.csv:
 permettre aux utilisateurs d'entrer leurs propres fichiers csv. la colonne sample (identifiant unique de l'échantillon), la colonne input_type (fastq ou pod5), la colonne input (chemin du fichier ou dossier contenant les données).
 
+## Avant de lancer
+
+1. Installer Conda environments
+2. Run:
+   
+   prokka --setupdb
+   
+   abricate --setupdb
+
+4. Verifier bases de données:
+   abricate --list
+
 
 ## Lancement actuel:
 ```bash nextflow run main.nf --input (chemin vers le samplesheet contenant le chemin d'accès aux données) ```
