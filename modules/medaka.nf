@@ -1,5 +1,7 @@
 process MEDAKA {
 
+    conda "${projectDir}/envs/polishing.yml"
+
     tag "${meta.id}"
 
     cpus 4
