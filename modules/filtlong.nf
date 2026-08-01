@@ -1,5 +1,7 @@
 process FILTLONG {
 
+    conda "${projectDir}/env/qc.yml"
+
     tag "${meta.id}"
 
     cpus 4
