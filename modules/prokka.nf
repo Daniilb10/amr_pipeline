@@ -1,6 +1,6 @@
 process PROKKA {
 
-    conda "${projectDir}/env/annotation.yml"
+    conda "${projectDir}/envs/annotation.yml"
 
     tag "${meta.id}"
 
