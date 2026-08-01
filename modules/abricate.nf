@@ -1,5 +1,7 @@
 process ABRICATE {
 
+    conda "${projectDir}/envs/detection.yml"
+
     tag "${meta.id}"
 
     publishDir "${params.outdir}/detection/abricate/${meta.id}",
