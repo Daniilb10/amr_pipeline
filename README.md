@@ -31,7 +31,9 @@ permettre aux utilisateurs d'entrer leurs propres fichiers csv. la colonne sampl
    abricate --setupdb
 
 4. Verifier bases de données:
+   
    abricate --list
+   
    bases nécessaire pour abricate: Plamidfinder,resfinder et vfdb
 
 
