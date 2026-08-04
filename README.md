@@ -23,7 +23,7 @@ permettre aux utilisateurs d'entrer leurs propres fichiers csv. la colonne sampl
 
 ## Avant de lancer
 
-1. Installer Conda environments
+1. Installer Conda environments (./Install.sh)
 2. Run:
    
    prokka --setupdb
