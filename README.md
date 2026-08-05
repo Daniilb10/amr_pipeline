@@ -16,11 +16,12 @@ input_type = Format soit POD5 ou Fastq
 
 input = chemin vers les données 
 
+
 sample   ,  input_type  ,   input
 
-barcode1,fastq,data/barcode01.fastq
+barcode1    , fastq      ,  data/barcode01.fastq
 
-barcode2,fastq,data/barcode02.fastq
+barcode2    , fastq      ,  data/barcode02.fastq
 
 ## Étapes prévues:
 1. Basecalling conditionnel avec Dorado
