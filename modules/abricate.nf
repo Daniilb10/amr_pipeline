@@ -77,12 +77,11 @@ process ABRICATE {
         > "${meta.id}_plasmidfinder.tsv" \
         2>> "${meta.id}_abricate.log"
 
-    /*
-     * Fusion des résultats :
-     * - un seul en-tête ;
-     * - ajout de la colonne ANALYSIS_TYPE ;
-     * - suppression des en-têtes répétés.
-     */
+     #  Fusion des résultats :
+     # - un seul en-tête ;
+     # - ajout de la colonne ANALYSIS_TYPE ;
+     # - suppression des en-têtes répétés.
+     
     awk -F '\\t' -v OFS='\\t' '
         BEGIN {
             print "ANALYSIS_TYPE",
