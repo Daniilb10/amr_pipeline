@@ -69,7 +69,9 @@ Conda ou Mamba
 Java + 17(java -version)
 
 ## Clone:
-```bash git clone https://github.com/Daniilb10/amr_pipeline cd amr_pipeline ```
+```bash git clone https://github.com/Daniilb10/amr_pipeline ```
+
+``` bash cd amr_pipeline ```
 
 ## Outputs:
 1.Fichiers produit par le basecalling avec les données en (format: fastq.gz)
