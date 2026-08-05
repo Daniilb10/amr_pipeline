@@ -8,6 +8,15 @@ Ce projet développe un pipeline Nextflow pour l’analyse de génomes bactérie
 - des fichiers FASTQ déjà basecallés
 - plusieurs isolats décrits dans un fichier CSV.
 
+## Exemple de csv 
+sample= identifiant de l'echantillon
+input_type = Format soit POD5 ou Fastq
+input = chemin vers les données 
+
+sample,input_type,input
+barcode1,fastq,data/barcode01.fastq
+barcode2,fastq,data/barcode02.fastq
+
 ## Étapes prévues:
 1. Basecalling conditionnel avec Dorado
    
