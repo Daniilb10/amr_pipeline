@@ -17,7 +17,7 @@ input_type = Format soit POD5 ou Fastq
 input = chemin vers les données 
 
 
-sample   ,  input_type  ,   input
+## sample   ,  input_type  ,   input
 
 barcode1    , fastq      ,  data/barcode01.fastq
 
