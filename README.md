@@ -10,13 +10,20 @@ Ce projet développe un pipeline Nextflow pour l’analyse de génomes bactérie
 
 ## Étapes prévues:
 1. Basecalling conditionnel avec Dorado
+   
 2. Contrôle qualité avec NanoPlot
+   
 3. Filtrage avec Filtlong
+   
 4. Assemblage avec Flye
+   
 5. Polissage avec medaka
+    
 6. Évaluation de l'assemblage avec QUAST
+    
 7. Annotation avec Prokka
-8.Détection des gènes avec abricate
+   
+ 8.Détection des gènes avec abricate
 
 ## Role du samplesheet.csv:
 permettre aux utilisateurs d'entrer leurs propres fichiers csv. la colonne sample (identifiant unique de l'échantillon), la colonne input_type (fastq ou pod5), la colonne input (chemin du fichier ou dossier contenant les données).
