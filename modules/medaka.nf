@@ -34,6 +34,8 @@ process MEDAKA {
     """
     set -euo pipefail
 
+    export CUDA_VISIBLE_DEVICES=""
+
     medaka_consensus \
         -i "${reads}" \
         -d "${assembly}" \
