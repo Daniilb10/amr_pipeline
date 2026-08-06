@@ -12,7 +12,7 @@ Ce projet développe un pipeline Nextflow pour l’analyse de génomes bactérie
 
 sample= identifiant de l'echantillon
 
-input_type = Format soit POD5 ou Fastq
+input_type = Format soit pod5 ou fastq
 
 input = chemin vers les données 
 
