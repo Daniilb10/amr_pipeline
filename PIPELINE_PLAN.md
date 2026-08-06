@@ -4,15 +4,13 @@ DORADO(conditionnel) -FASTQ
                       |
                   FILTLONG
                       |
-                  NANOPLOT (APRÈS-FILTRAGE)
-                      |
                   ASSEMBLAGE (FLYE)
                       |
                  QUALITÉ DE L'ASSEMBLAGE (QUAST)      
                       |
-                  ANNOTATION (BAKTA)
+                  ANNOTATION (Prokka)
                       |
-                  AMR GÈNES (AMRFINDERPLUS)
+                  AMR GÈNES (ABRICATE)
                       |
                   Rapport Finaux (MULTIQC) et tableau recapitulatif
 
@@ -25,8 +23,8 @@ Sorties du pipeline:
 - lectures filtrées 
 - assemblage FASTA 
 - résultats QUAST 
-- annotation Bakta 
-- résultats AMRFinderPlus 
+- annotation Prokka
+- résultats Abricate
 - rapport MultiQC
 
 
