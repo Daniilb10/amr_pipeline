@@ -64,8 +64,11 @@ permettre aux utilisateurs d'entrer leurs propres fichiers csv. la colonne sampl
 
 
 ## Installation:
+
 Nextflow >= 23.04
+
 Conda ou Mamba
+
 Java + 17(java -version)
 
 ## Clone:
