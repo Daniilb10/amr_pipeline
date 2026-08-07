@@ -1,6 +1,6 @@
 process FILTLONG {
 
-    conda "${projectDir}/env/qc.yml"
+    conda "${projectDir}/envs/qc.yml"
 
     tag "${meta.id}"
 
