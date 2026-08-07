@@ -243,6 +243,14 @@ return tuple(meta, inputPath)
      */
     MEDAKA(medaka_input_ch)
 
+
+   /*
+    * Evaluation de l'assemblage poli
+    */
+    QUAST(MEDAKA.out.consensus)
+
+
+
    /*
     * Annotation des assemblages polis
     */
