@@ -7,6 +7,7 @@ include { NANOPLOT_RAW } from './modules/nanoplot'
 include { FILTLONG } from './modules/filtlong'
 include { FLYE }  from './modules/flye'
 include { MEDAKA } from './modules/medaka'
+include { QUAST } from './modules/quast'
 include { PROKKA } from './modules/prokka'
 include { ABRICATE } from './modules/abricate'
  
