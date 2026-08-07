@@ -1,4 +1,5 @@
 # AMR Oxford Nanopore Pipeline 
+pipeline testé avec Nextflow 24.04.4 et Java 21
 
 ## Description: 
 Ce projet développe un pipeline Nextflow pour l’analyse de génomes bactériens séquencés avec Oxford Nanopore et la détection de gènes de résistance aux antimicrobiens. 
