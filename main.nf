@@ -10,6 +10,7 @@ include { MEDAKA } from './modules/medaka'
 include { QUAST } from './modules/quast'
 include { PROKKA } from './modules/prokka'
 include { ABRICATE } from './modules/abricate'
+include { MULTIQC } from './modules/multiqc'
  
  def validateSample(row) { 
 
@@ -261,6 +262,27 @@ return tuple(meta, inputPath)
     * 
     */
     ABRICATE(MEDAKA.out.consensus)
+
+
+    nanoplot_mqc = NANOPLOT_RAW.out.report.map { meta, report ->
+        report
+    }
+
+    quast_mqc = QUAST.out.report.map { meta, report ->
+        report
+    }
+
+    abricate_mqc = ABRICATE.out.summary.map { meta, summary ->
+        summary
+    }
+
+
+    multiqc_input = nanoplot_mqc
+      .mix(quast_mqc,
+      abricate_mqc)
+      .collect()
+
+    MULTIQC(multiqc_input)
 
 
     /*
