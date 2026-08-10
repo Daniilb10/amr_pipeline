@@ -94,6 +94,8 @@ Java + 17(java -version)
 
 8.Dossier abricate avec les fichiers contenant les informations de 3 bases de données plasmidfinder,vfdb,resfinder (formats:tsv,log)
 
+9. Rapport multiqc avec les information de nanoplot, QUAST
+
 
 
 
