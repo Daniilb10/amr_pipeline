@@ -39,7 +39,7 @@ barcode2    , fastq      ,  data/barcode02.fastq
     
 7. Annotation avec Prokka
    
- 8.Détection des gènes avec abricate
+8. Détection des gènes avec abricate
 
 ## Role du samplesheet.csv:
 permettre aux utilisateurs d'entrer leurs propres fichiers csv. la colonne sample (identifiant unique de l'échantillon), la colonne input_type (fastq ou pod5), la colonne input (chemin du fichier ou dossier contenant les données).
