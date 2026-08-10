@@ -1,0 +1,8 @@
+name: reporting
+
+channels:
+  - conda-forge
+  - bioconda
+
+dependencies:
+ - multiqc=1.18
