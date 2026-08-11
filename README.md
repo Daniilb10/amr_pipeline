@@ -96,6 +96,41 @@ Java + 17(java -version)
 
 9. Rapport multiqc avec les information de nanoplot, QUAST
 
+## Result summary
+
+Le pipeline contient un script Python (' script/summarize_results.py') qui génere un aperçu des resultats principaux de l'annotation et de la dectection de résistance antimicrobienne.
+
+Le script extrait et fait un résumé du :
+
+1. Nombre de séquences codantes (CDS)
+   
+2. Nombre de genes condant pour de l'ARNt et ARNr
+
+3. Nombre de proteines probables
+   
+4. Genes de resistance antimicrobienne AMR (unique)
+   
+5. Genes associés a la virulence (unique)
+   
+6. Marqueurs plasmidiques
+
+Resultats de Prokka et abricate sont automatiquement regroupées par sample ID.
+
+### Run the summary script 
+
+Apres avoir run le pipeline, run :
+
+```bash
+python3 scripts/summarize_results.py 
+
+
+
+
+
+-
+
+
+
 
 
 
