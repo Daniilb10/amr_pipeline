@@ -55,6 +55,31 @@ def detect_sample_from_filename(path):
     return path.stem
 
 
+def normalize_sample_id(sample):
+    """
+    Normalize sample names so outputs from different tools
+    are grouped under the same biological sample.
+    """
+
+    suffixes = [
+        "_prokka",
+        "_quast",
+        "_nanoplot_raw",
+        "_nanoplot_filtered",
+        "_abricate",
+        "_medaka",
+        "_flye",
+    ]
+
+    sample = str(sample).strip()
+
+    for suffix in suffixes:
+        if sample.endswith(suffix):
+            sample = sample[:-len(suffix)]
+
+    return sample
+
+
 # ------------------------------------------------------------
 # PROKKA
 # ------------------------------------------------------------
@@ -138,9 +163,33 @@ def read_prokka_tsv(path):
 
 
 def find_prokka_results(annotation_dir):
-    """
+   """
     Find Prokka TSV files recursively.
     """
+
+    def normalize_sample_id(sample):
+        """
+        Normalize sample names so outputs from different tools
+        are grouped under the same biological sample.
+        """
+
+        suffixes = [
+            "_prokka",
+            "_quast",
+            "_nanoplot_raw",
+            "_nanoplot_filtered",
+            "_abricate",
+            "_medaka",
+            "_flye",
+        ]
+
+        sample = str(sample).strip()
+
+        for suffix in suffixes:
+            if sample.endswith(suffix):
+                sample = sample[:-len(suffix)]
+
+        return sample
 
     results = {}
 
@@ -162,6 +211,7 @@ def find_prokka_results(annotation_dir):
         }:
             sample = detect_sample_from_filename(path)
 
+        sample = normalize_sample_id(sample)
         results[sample] = parsed
 
     return results
