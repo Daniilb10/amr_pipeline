@@ -1,6 +1,6 @@
 process QUAST {
 
-    conda "${projectDir}/envs/qc.yml"
+    conda "${projectDir}/envs/quast.yml"
 
     tag "${meta.id}"
 
