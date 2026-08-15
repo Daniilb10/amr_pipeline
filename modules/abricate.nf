@@ -2,9 +2,9 @@ process ABRICATE {
 
     conda "${projectDir}/envs/detection.yml"
 
-    tag "${meta.id}"
+    tag  { "${meta.id}" }
 
-    publishDir "${params.outdir}/detection/abricate/${meta.id}",
+    publishDir  { "${params.outdir}/detection/abricate/${meta.id}" },
         mode: 'copy',
         overwrite: true
 
