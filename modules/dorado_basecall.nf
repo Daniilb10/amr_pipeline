@@ -2,9 +2,9 @@ process DORADO_BASECALL {
 
     conda "${projectDir}/envs/basecalling.yml"
 
-    tag "${meta.id}" 
+    tag  { "${meta.id}" }
 
-    publishDir "${params.outdir}/basecalling",
+    publishDir { "${params.outdir}/basecalling" },
         mode: 'copy',
         overwrite: true
 
