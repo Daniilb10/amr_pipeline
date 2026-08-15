@@ -104,8 +104,7 @@ java -version
 
 Le pipeline a été testé avec :
 
-Nextflow 24.04.4
-Java 21
+Plusieurs versions de Nextflow
 
 ## Cloner le dépot:
 
