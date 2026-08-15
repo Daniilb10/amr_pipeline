@@ -2,11 +2,11 @@ process FLYE {
 
     conda "${projectDir}/envs/assembly.yml"
 
-    tag "${meta.id}"
+    tag  { "${meta.id}" }
 
     cpus 4
 
-    publishDir "${params.outdir}/assembly/flye/${meta.id}",
+    publishDir { "${params.outdir}/assembly/flye/${meta.id}" },
         mode: 'copy',
         overwrite: true
 
