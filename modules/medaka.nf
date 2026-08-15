@@ -2,11 +2,11 @@ process MEDAKA {
 
     conda "${projectDir}/envs/polishing.yml"
 
-    tag "${meta.id}"
+    tag  { "${meta.id}" }
 
     cpus 4
 
-    publishDir "${params.outdir}/polishing/medaka/${meta.id}",
+    publishDir { "${params.outdir}/polishing/medaka/${meta.id}" },
         mode: 'copy',
         overwrite: true
 
