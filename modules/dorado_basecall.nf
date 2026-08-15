@@ -5,7 +5,7 @@ process DORADO_BASECALL {
     tag "${meta.id}" 
 
     publishDir "${params.outdir}/basecalling",
-        mode: 'copy'
+        mode: 'copy',
         overwrite: true
 
     input:
