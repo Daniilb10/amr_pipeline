@@ -190,32 +190,20 @@ Comme les données de test sont déjà au format FASTQ, Dorado n'est pas exécut
 
 Le pipeline doit automatiquement démarrer directement à partir de l'analyse FASTQ :
 
-NanoPlot:
-   QC des lectures brutes
-  
-Filtlong:
-   Filtrage des lectures
-    
-Flye:
-   Assemblage du génome
-    
-Medaka:
-   Polissage de l'assemblage
-  
-QUAST:
-   Évaluation de l'assemblage
-
-Prokka:
-   Annotation du génome
-
-ABRicate:
-  ResFinder → gènes AMR
-  VFDB → gènes de virulence
-  PlasmidFinder → marqueurs plasmidiques
-  
-MultiQC:
-   Rapport final
-
+| Étape | Outil                        | Fonction                                                   | Résultat principal              |
+| ----- | ---------------------------- | ---------------------------------------------------------- | ------------------------------- |
+| 1     | **FASTQ**                    | Données d'entrée déjà basecallées                          | Fichiers `.fastq` / `.fastq.gz` |
+| 2     | **NanoPlot**                 | Contrôle qualité des lectures brutes                       | Rapports QC                     |
+| 3     | **Filtlong**                 | Filtrage des lectures de mauvaise qualité                  | FASTQ filtrés                   |
+| 4     | **NanoPlot**                 | Contrôle qualité après filtrage                            | Rapports QC filtrés             |
+| 5     | **Flye**                     | Assemblage *de novo* du génome                             | Assemblage `.fasta`             |
+| 6     | **Medaka**                   | Polissage de l'assemblage                                  | Assemblage poli                 |
+| 7     | **QUAST**                    | Évaluation de la qualité de l'assemblage                   | Rapports d'évaluation           |
+| 8     | **Prokka**                   | Annotation fonctionnelle du génome                         | Fichiers d'annotation           |
+| 9     | **ABRicate – ResFinder**     | Détection des gènes de résistance aux antimicrobiens (AMR) | Résultats AMR                   |
+| 10    | **ABRicate – VFDB**          | Détection des gènes/facteurs de virulence                  | Résultats de virulence          |
+| 11    | **ABRicate – PlasmidFinder** | Détection des marqueurs plasmidiques                       | Résultats plasmidiques          |
+| 12    | **MultiQC**                  | Agrégation des résultats QC                                | Rapport HTML final              |
 
 
 ## Validation du test:
@@ -245,123 +233,21 @@ results/
 
 Selon la configuration du pipeline, les résultats peuvent inclure les éléments suivants:
 
+| N° | Résultat / Étape                           | Outil                    | Description                                                                                                                           | Principaux fichiers / formats                                                  |
+| -: | ------------------------------------------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+|  1 | **Basecalling**                            | Dorado                   | Conversion des données POD5 en séquences FASTQ. Cette étape est uniquement exécutée lorsque les données d'entrée sont au format POD5. | `.fastq.gz`                                                                    |
+|  2 | **Contrôle qualité des lectures brutes**   | NanoPlot                 | Évaluation de la qualité des lectures avant filtrage.                                                                                 | `.html`, `.png`, `.txt`, `.log`                                                |
+|  3 | **Lectures filtrées**                      | Filtlong                 | Filtrage des lectures selon les critères de qualité définis dans le pipeline.                                                         | `.fastq.gz`                                                                    |
+|  4 | **Contrôle qualité des lectures filtrées** | NanoPlot                 | Évaluation de la qualité des lectures après filtrage.                                                                                 | `.html`, `.png`, `.txt`, `.log`                                                |
+|  5 | **Assemblage du génome**                   | Flye                     | Assemblage *de novo* des lectures filtrées afin de reconstruire le génome bactérien.                                                  | `.fasta`, `.txt`, `.log`                                                       |
+|  6 | **Polissage de l'assemblage**              | Medaka                   | Amélioration de la précision de l'assemblage obtenu avec Flye.                                                                        | `.bam`, `.bai`, `.log`, `.hdf`, `.fasta`                                       |
+|  7 | **Évaluation de l'assemblage**             | QUAST                    | Évaluation de la qualité et des principales statistiques de l'assemblage.                                                             | `.pdf`, `.html`, `.tsv`, `.txt`                                                |
+|  8 | **Annotation fonctionnelle**               | Prokka                   | Annotation des séquences codantes, ARN et autres éléments génomiques.                                                                 | `.faa`, `.fna`, `.fsa`, `.gbk`, `.gff`, `.log`, `.sqn`, `.tbl`, `.tsv`, `.txt` |
+|  9 | **Détection des gènes AMR**                | ABRicate / ResFinder     | Identification des gènes de résistance aux antimicrobiens.                                                                            | `.tsv`, `.log`                                                                 |
+| 10 | **Détection des gènes de virulence**       | ABRicate / VFDB          | Identification des gènes et facteurs associés à la virulence.                                                                         | `.tsv`, `.log`                                                                 |
+| 11 | **Détection des marqueurs plasmidiques**   | ABRicate / PlasmidFinder | Identification des marqueurs associés aux plasmides.                                                                                  | `.tsv`, `.log`                                                                 |
+| 12 | **Agrégation des résultats**               | MultiQC                  | Regroupement des résultats de contrôle qualité et d'évaluation provenant notamment de NanoPlot et QUAST.                              | `.html`                                                                        |
 
-1. Basecalling
-
-Pour les données POD5, fichiers FASTQ produits par Dorado :
-
-fastq.gz
-
-Cette étape n'est pas exécutée lorsque les données d'entrée sont déjà au format FASTQ.
-
-
-2. Contrôle qualité NanoPlot
-
-Résultats du contrôle qualité pour chaque échantillon :
-
-html
-
-png
-
-txt
-
-log
-
-
-Les résultats sont générés pour les lectures brutes et, selon la configuration, pour les lectures après filtrage.
-
-
-3. Lectures filtrées
-
-Lectures après traitement avec Filtlong : fastq.gz
-
-
-4. Assemblage Flye
-
-Le répertoire Flye contient les résultats d'assemblage pour chaque échantillon, notamment :
-
-fasta
-
-txt
-
-log
-
-
-5. Polissage Medaka
-
-Le répertoire Medaka contient les résultats du polissage, notamment :
-
-bam
-
-bai
-
-log
-
-hdf
-
-fasta
-
-
-6. Évaluation de l'assemblage avec QUAST
-
-Le répertoire assembly_qc contient les résultats de l'évaluation des assemblages :
-
-pdf
-
-html
-
-tsv
-
-txt
-
-
-7. Annotation avec Prokka
-
-Le répertoire Prokka contient les fichiers d'annotation fonctionnelle pour chaque échantillon, notamment :
-
-faa
-
-fna
-
-fsa
-
-gbk
-
-gff
-
-log
-
-sqn
-
-tbl
-
-tsv
-
-txt
-
-
-8. Détection avec ABRicate
-
-Le répertoire ABRicate contient les résultats des trois bases de données utilisées par le pipeline :
-
-PlasmidFinder ;
-
-VFDB ;
-
-ResFinder.
-
-Les principaux fichiers sont au format : tsv et log
-
-
-9. Rapport MultiQC
-
-Un rapport MultiQC regroupe notamment les informations provenant de :
-
-NanoPlot ;
-
-QUAST ;
-
-autres outils produisant des fichiers compatibles avec MultiQC.
 
 
 ### Result summary 
