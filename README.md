@@ -94,7 +94,7 @@ Génération d'un rapport regroupant les résultats de contrôle qualité et d'�
 ## Installation prérequis 
 Le pipeline nécessite :
 
-Nextflow >= 23.04
+Nextflow 
 Java 21
 Conda ou Mamba
 
@@ -102,9 +102,22 @@ La version de Java peut être vérifiée avec :
 
 java -version
 
-Le pipeline a été testé avec :
+## Compatibilité Nextflow
 
-Plusieurs versions de Nextflow
+Le pipeline a été testé avec plusieurs versions de Nextflow :
+
+| Nextflow | Test syntaxique (`-stub-run`) | Statut |
+|----------|-------------------------------|--------|
+| 24.04.4 | Passé | Compatible |
+| 25.04.8 | Passé | Compatible |
+| 26.04.6 | Passé | Compatible |
+
+Les tests ont été réalisés avec le jeu de données FASTQ fourni dans
+`test_data/`.
+
+Le pipeline est compatible avec le parseur historique de Nextflow ainsi
+qu'avec le parseur strict introduit comme comportement par défaut dans
+Nextflow 26.04.
 
 ## Cloner le dépot:
 
