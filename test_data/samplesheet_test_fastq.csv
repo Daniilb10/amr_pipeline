@@ -1,0 +1,3 @@
+sample,input_type,input
+barcode1test,fastq,test_data/barcode01_test_2000.fastq
+barcode2test,fastq,test_data/barcode02_test_2000.fastq
