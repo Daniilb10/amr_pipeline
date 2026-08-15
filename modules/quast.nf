@@ -2,11 +2,11 @@ process QUAST {
 
     conda "${projectDir}/envs/quast.yml"
 
-    tag "${meta.id}"
+    tag  { "${meta.id}" }
 
     cpus 4
 
-    publishDir "${params.outdir}/assembly_qc/quast/${meta.id}",
+    publishDir { "${params.outdir}/assembly_qc/quast/${meta.id}" },
         mode: 'copy',
         overwrite: true
 
