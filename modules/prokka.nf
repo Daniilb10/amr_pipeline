@@ -2,9 +2,9 @@ process PROKKA {
 
     conda "${projectDir}/envs/annotation.yml"
 
-    tag "${meta.id}"
+    tag  { "${meta.id}" }
 
-    publishDir "${params.outdir}/annotation/prokka/${meta.id}",
+    publishDir  { "${params.outdir}/annotation/prokka/${meta.id}" },
         mode: 'copy',
         overwrite: true
 
