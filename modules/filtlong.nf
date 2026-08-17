@@ -22,20 +22,11 @@ process FILTLONG {
     """
     set -euo pipefail
 
-    if [[ "${reads}" == *.gz ]]; then
-        gzip -dc "${reads}" |
-        filtlong \
-            --min_length ${params.min_length} \
-            --keep_percent ${params.keep_percent} \
-            - |
-        gzip -c > "${meta.id}_filtered.fastq.gz"
-    else
         filtlong \
             --min_length ${params.min_length} \
             --keep_percent ${params.keep_percent} \
             "${reads}" |
         gzip -c > "${meta.id}_filtered.fastq.gz"
-    fi
 
     gzip -t "${meta.id}_filtered.fastq.gz"
     test -s "${meta.id}_filtered.fastq.gz"
