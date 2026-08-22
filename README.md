@@ -51,9 +51,6 @@ Exécuté uniquement lorsque les données d'entrée sont au format POD5.
 3. Filtrage avec Filtlong:
 Suppression des lectures de mauvaise qualité.
 
-4. Contrôle qualité après filtrage avec NanoPlot:
-Évaluation de la qualité des lectures après filtrage.
-
 5. Assemblage avec Flye:
 Assemblage de novo du génome bactérien.
 
@@ -207,7 +204,6 @@ Le pipeline doit automatiquement démarrer directement à partir de l'analyse FA
 | 1     | **FASTQ**                    | Données d'entrée déjà basecallées                          | Fichiers `.fastq` / `.fastq.gz` |
 | 2     | **NanoPlot**                 | Contrôle qualité des lectures brutes                       | Rapports QC                     |
 | 3     | **Filtlong**                 | Filtrage des lectures de mauvaise qualité                  | FASTQ filtrés                   |
-| 4     | **NanoPlot**                 | Contrôle qualité après filtrage                            | Rapports QC filtrés             |
 | 5     | **Flye**                     | Assemblage *de novo* du génome                             | Assemblage `.fasta`             |
 | 6     | **Medaka**                   | Polissage de l'assemblage                                  | Assemblage poli                 |
 | 7     | **QUAST**                    | Évaluation de la qualité de l'assemblage                   | Rapports d'évaluation           |
@@ -249,8 +245,7 @@ Selon la configuration du pipeline, les résultats peuvent inclure les élément
 | -: | ------------------------------------------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 |  1 | **Basecalling**                            | Dorado                   | Conversion des données POD5 en séquences FASTQ. Cette étape est uniquement exécutée lorsque les données d'entrée sont au format POD5. | `.fastq.gz`                                                                    |
 |  2 | **Contrôle qualité des lectures brutes**   | NanoPlot                 | Évaluation de la qualité des lectures avant filtrage.                                                                                 | `.html`, `.png`, `.txt`, `.log`                                                |
-|  3 | **Lectures filtrées**                      | Filtlong                 | Filtrage des lectures selon les critères de qualité définis dans le pipeline.                                                         | `.fastq.gz`                                                                    |
-|  4 | **Contrôle qualité des lectures filtrées** | NanoPlot                 | Évaluation de la qualité des lectures après filtrage.                                                                                 | `.html`, `.png`, `.txt`, `.log`                                                |
+|  3 | **Lectures filtrées**                      | Filtlong                 | Filtrage des lectures selon les critères de qualité définis dans le pipeline.                                                         | `.fastq.gz`                                                                    |                                          
 |  5 | **Assemblage du génome**                   | Flye                     | Assemblage *de novo* des lectures filtrées afin de reconstruire le génome bactérien.                                                  | `.fasta`, `.txt`, `.log`                                                       |
 |  6 | **Polissage de l'assemblage**              | Medaka                   | Amélioration de la précision de l'assemblage obtenu avec Flye.                                                                        | `.bam`, `.bai`, `.log`, `.hdf`, `.fasta`                                       |
 |  7 | **Évaluation de l'assemblage**             | QUAST                    | Évaluation de la qualité et des principales statistiques de l'assemblage.                                                             | `.pdf`, `.html`, `.tsv`, `.txt`                                                |
